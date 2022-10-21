@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+  //languages Objects
+var arrLang = {
+    'en' : {
+      'home' : 'This is a Heading',
+      'topsites' : 'This is a paragraph.'
+    },
+
+    'es' : {
+      'home' : 'సెలబ్రిటీ వీడియోలు',
+      'topsites' : 'టాప్ సైట్స్'
+    }
+};
+
+// Process translation
+$(function() {
+    $('.translate').click(function() {
+      var lang = $(this).attr('id');
+
+      $('.lang').each(function(index, item) {
+        $(this).text(arrLang[lang][$(this).attr('key')]);
+      });
+    });
+  });
+</script>
+
+</head>
+<body>
+
+<h1 class="lang" key="home">This is a Heading</h1>
+<p class="lang" key="topsites">This is a paragraph.</p>
+  <div class="customSelectWrapper">
+    <input type="checkbox" id="activate-btn">Language</input>
+    <div class="customBtnWrap">
+      <button id="en" class="translate">English</button>
+      <button id="es" class="translate">Telugu</button>
+    </div>
+  </div>
+
+
+
+</body>
+</html>
+
+<style>
+.customSelectWrapper {
+  width: 100px;
+  text-align: center;
+  position: relative;
+  color: #000;
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 5px 2px;
+}
+
+#activate-btn {
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.customBtnWrap {
+  display: none;
+} 
+
+#activate-btn:checked + .customBtnWrap {
+  display: flex;
+  position: absolute;
+  top: 29px;
+  flex-direction: column;
+  width: 100%;
+  color: #000;
+}
+
+.customBtnWrap button {
+    background: #e0e0e0;
+    padding: 7px 0px;
+    border: none;
+}
+
+.customBtnWrap button:hover {
+  background: #d2d2d2;
+}
+</style>
